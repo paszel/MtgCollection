@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cards raw list</title>
+</head>
+<body>
+    <div class="col-md-12">
+        <table style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Mana cost</th>
+                    <th>Colors</th>
+                    <th>Power/Toughness</th>
+                    <th>Rarity</th>
+                    <th>Types</th>
+                    <th>Subtypes</th>
+                    <th>Supertypes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for card in cards %} 
+                {% set colors = ', '.join(card.colors) %} 
+                {% set types = ', '.join(card.types) %}
+                {% set subtypes = ', '.join(card.subtypes) %}
+                {% set supertypes = ', '.join(card.supertypes) %}
+                
+                    <tr>
+                        <td>{{ card.name }}</td>
+                        <td>{{ card.cmc }} => {{ card.mana_cost }}</td>
+                        <td>{{ colors }}</td>
+                        <td>{{ card.power }} / {{ card.toughness }}</td>
+                        <td>{{ card.rarity }}</td>
+                        <td>{{ types }}</td>
+                        <td>{{ subtypes }}</td>
+                        <td>{{ supertypes }}</td>
+                        
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
