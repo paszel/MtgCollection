@@ -9,8 +9,9 @@ def page_not_found(error):
 
 @app.route('/')
 def index():
-    result = get_cards()
+    result = [] # get_cards()
+    
     return render_template('cards.html',cards=result)
 
 if __name__ == '__main__':
-    app.run(port=1234, debug=True)
+    app.run(host="0.0.0.0", port=1234, debug=True)

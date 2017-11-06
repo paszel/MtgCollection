@@ -1,16 +1,28 @@
 from mtgsdk import Card
 from mtgsdk import Set
 from pprint import pprint
+from db_provider import insert_card
+import json
+
+
+from json import JSONEncoder
+class MyEncoder(JSONEncoder):
+    def default(self, obj):
+        return obj.__dict__
 
 def get_cards():
 
     try:
-        res = []
         cards = Card.where(supertypes='legendary').where(subtypes='vampire').all()
-        return cards
-    
+        #return cards
+
+        res = []
         index = 0
+        insert_card({"name":"test"})
         for card in cards:
+
+            js = MyEncoder().encode(card)
+
             index+=1
             colors = ', '.join(card.colors)
             types = ', '.join(card.types)
@@ -24,3 +36,5 @@ def get_cards():
     except Exception as ex:
         print('Exception occured {0}'.format(ex))
 
+if __name__ == '__main__':
+    pprint(get_cards())
