@@ -4,7 +4,6 @@ from pprint import pprint
 from db_provider import insert_card
 import json
 
-
 from json import JSONEncoder
 class MyEncoder(JSONEncoder):
     def default(self, obj):

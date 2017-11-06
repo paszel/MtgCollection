@@ -9,7 +9,7 @@ def page_not_found(error):
 
 @app.route('/')
 def index():
-    result = [] # get_cards()
+    result = get_cards()
     
     return render_template('cards.html',cards=result)
 
